@@ -89,18 +89,33 @@ const About = () => {
           <h2 className="mt-6 font-display font-semibold text-4xl lg:text-5xl max-w-3xl">
             Core capabilities.
           </h2>
-          <div className="mt-16 grid gap-px bg-accent/10 sm:grid-cols-2 lg:grid-cols-4 border hairline">
-            {capabilities.map((c) => {
+          {(() => {
+            const firstRow = capabilities.slice(0, 4);
+            const secondRow = capabilities.slice(4);
+            const renderCard = (c: typeof capabilities[number]) => {
               const Icon = c.icon;
               return (
-                <article key={c.title} className="bg-background p-8 hover:bg-surface transition-colors">
+                <article
+                  key={c.title}
+                  className="bg-background p-8 hover:bg-surface transition-colors border hairline w-full sm:w-[calc((100%-1px)/2)] lg:w-[calc((100%-3px)/4)]"
+                >
                   <Icon className="text-accent" size={22} strokeWidth={1.5} />
                   <h3 className="mt-5 font-display font-semibold text-lg">{c.title}</h3>
                   <p className="mt-3 text-sm text-foreground/62 leading-relaxed">{c.body}</p>
                 </article>
               );
-            })}
-          </div>
+            };
+            return (
+              <div className="mt-16 space-y-px">
+                <div className="flex flex-wrap justify-start gap-px bg-accent/10">
+                  {firstRow.map(renderCard)}
+                </div>
+                <div className="flex flex-wrap justify-center gap-px bg-accent/10">
+                  {secondRow.map(renderCard)}
+                </div>
+              </div>
+            );
+          })()}
         </div>
       </section>
 
