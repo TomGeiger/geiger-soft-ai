@@ -64,7 +64,7 @@ const Index = () => {
               <span className="text-gradient">Built to Ship.</span>
             </h1>
             <p className="mt-8 max-w-xl text-lg font-light text-foreground/62 leading-relaxed">
-              MCP servers, voice AI agents, and intelligent web platforms — engineered for insurance and financial services with 30 years of full-stack depth behind every deployment.
+              MCP servers, voice AI agents, and SaaS platforms — engineered for insurance and financial services with 30 years of full-stack depth behind every deployment.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <CtaButton to="/work" variant="primary">See My Work</CtaButton>
@@ -102,16 +102,16 @@ const Index = () => {
           Geigersoft is independent technical consulting focused on the intersection of AI and financial services. The builds below are live or in active development.
         </p>
 
-        <div className="mt-16 grid gap-px bg-accent/10 sm:grid-cols-2 border hairline">
+        <div className="mt-16 grid gap-px bg-accent/10 sm:grid-cols-2 border hairline auto-rows-fr items-stretch">
           {projects.map((p) => (
             <article
               key={p.id}
-              className="relative bg-background p-8 lg:p-10 group overflow-hidden transition-colors hover:bg-surface"
+              className="relative bg-background p-8 lg:p-10 group overflow-hidden transition-colors hover:bg-surface flex flex-col h-full"
             >
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity">
                 <NodeGraph opacity={0.12} seed={Number(p.num) * 11} nodeCount={14} />
               </div>
-              <div className="relative">
+              <div className="relative flex flex-col flex-1">
                 <div className="flex items-start justify-between gap-4">
                   <h3 className="font-display font-semibold text-2xl">{p.name}</h3>
                   <span className="shrink-0 font-mono text-[10px] uppercase tracking-[0.16em] text-accent border hairline-strong px-2.5 py-1 rounded-sm">
@@ -119,7 +119,7 @@ const Index = () => {
                   </span>
                 </div>
                 <p className="mt-5 text-foreground/62 leading-relaxed">{p.short}</p>
-                <div className="mt-8 pt-6 border-t hairline font-mono text-xs text-foreground/45">
+                <div className="mt-auto pt-6 border-t hairline font-mono text-xs text-foreground/45">
                   {p.stack.join(" · ")}
                 </div>
               </div>

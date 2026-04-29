@@ -89,7 +89,7 @@ const About = () => {
           <h2 className="mt-6 font-display font-semibold text-4xl lg:text-5xl max-w-3xl">
             Core capabilities.
           </h2>
-          <div className="mt-16 grid gap-px bg-accent/10 sm:grid-cols-2 lg:grid-cols-3 border hairline">
+          <div className="mt-16 grid gap-px bg-accent/10 sm:grid-cols-2 lg:grid-cols-4 border hairline">
             {capabilities.map((c) => {
               const Icon = c.icon;
               return (
