@@ -1,3 +1,4 @@
+import { ExternalLink } from "lucide-react";
 import { Layout } from "@/components/Layout";
 import { NodeGraph } from "@/components/NodeGraph";
 import { TerminalLabel } from "@/components/TerminalLabel";
@@ -13,14 +14,11 @@ const stackBlocks = [
 
 const pastClients = "Ford Motor Co. · MetLife Japan · Genworth Financial · Willkie Farr";
 
-const engagements = [
+const engagements: Array<{ name: string; body: string; href?: string }> = [
   {
     name: "TenXTL",
     body: "Sustainability technology. Code analysis, developer training platform, Data Platform API architecture proposal. Built the complete TenXTL Developer Academy — a 14-module React/TypeScript/Tailwind training site.",
-  },
-  {
-    name: "Estate Planning Law Practice",
-    body: "Solo PLLC web buildout with NC Bar Rules 7.1–7.5 compliance. Full design, build, and deployment with attorney advertising compliance review.",
+    href: "https://tenxtl-developer-academy.vercel.app/",
   },
   {
     name: "Trusted Future Agent Platform",
@@ -157,13 +155,38 @@ const Index = () => {
         <h2 className="mt-6 font-display font-semibold text-4xl lg:text-5xl max-w-3xl">
           Selected recent work.
         </h2>
-        <div className="mt-16 grid gap-6 md:grid-cols-3">
-          {engagements.map((e) => (
-            <article key={e.name} className="border hairline p-8 bg-surface/40 hover:bg-surface transition-colors">
-              <h3 className="font-display font-semibold text-lg">{e.name}</h3>
-              <p className="mt-4 text-foreground/62 leading-relaxed text-sm">{e.body}</p>
-            </article>
-          ))}
+        <div className="mt-16 grid gap-6 md:grid-cols-2">
+          {engagements.map((e) => {
+            const cardClass =
+              "group relative border hairline p-8 bg-surface/40 hover:bg-surface transition-colors";
+            const content = (
+              <>
+                <h3 className="font-display font-semibold text-lg pr-8">{e.name}</h3>
+                {e.href && (
+                  <ExternalLink
+                    className="absolute top-6 right-6 h-4 w-4 text-accent transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                    aria-hidden
+                  />
+                )}
+                <p className="mt-4 text-foreground/62 leading-relaxed text-sm">{e.body}</p>
+              </>
+            );
+            return e.href ? (
+              <a
+                key={e.name}
+                href={e.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${cardClass} block hover:border-accent/30`}
+              >
+                {content}
+              </a>
+            ) : (
+              <article key={e.name} className={cardClass}>
+                {content}
+              </article>
+            );
+          })}
         </div>
       </section>
 

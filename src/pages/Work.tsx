@@ -90,7 +90,7 @@ const details: ProjectDetail[] = [
     name: "Trusted Future / Horizon Capital",
     status: "Live · Ongoing",
     overview:
-      "In-house technologist for an Experior Financial Group practice serving a downline of 500+ insurance agents in the Indexed Universal Life space. Owns the practice's web presence, education content, and agent-facing software.",
+      "In-house technologist for an Experior Financial Group practice serving an organization of 500+ insurance agents in the Indexed Universal Life space. Owns the practice's web presence, education content, and agent-facing software.",
     bullets: [
       "Built and maintains patriciageiger.com (Lovable.dev → GitHub → Vercel, Namecheap DNS).",
       "Produces IUL education content and interactive financial tools — compound interest calculators, 401(k) vs IUL comparisons, long-form blog content.",
@@ -129,7 +129,18 @@ const Work = () => {
       <nav className="sticky top-16 z-40 bg-background/85 backdrop-blur border-b hairline">
         <div className="container flex gap-x-8 gap-y-2 overflow-x-auto py-4 font-mono text-xs uppercase tracking-[0.16em] text-foreground/45">
           {details.map((d) => (
-            <a key={d.id} href={`#${d.id}`} className="whitespace-nowrap hover:text-accent transition-colors">
+            <a
+              key={d.id}
+              href={`#${d.id}`}
+              onClick={(e) => {
+                e.preventDefault();
+                const el = document.getElementById(d.id);
+                if (!el) return;
+                el.scrollIntoView({ behavior: "smooth", block: "start" });
+                history.replaceState(null, "", `#${d.id}`);
+              }}
+              className="whitespace-nowrap hover:text-accent transition-colors"
+            >
               {d.num} / {d.name.split(" ").slice(0, 3).join(" ")}
             </a>
           ))}

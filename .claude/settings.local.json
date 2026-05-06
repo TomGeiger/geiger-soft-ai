@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(command -v magick)",
+      "Bash(command -v convert)",
+      "Bash(command -v rsvg-convert)",
+      "Bash(command -v sips)",
+      "Bash(command -v sharp)",
+      "Bash(node /tmp/favgen/gen.js)",
+      "Bash(npm run *)",
+      "Bash(git add *)",
+      "Bash(git push *)"
+    ]
+  }
+}

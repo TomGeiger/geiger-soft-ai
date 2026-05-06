@@ -41,7 +41,7 @@ export const projects: Project[] = [
     name: "Trusted Future / Horizon Capital",
     status: "LIVE · ONGOING",
     short:
-      "In-house technologist for an Experior Financial Group practice serving a 500+ agent downline. Web platform, education content, agent-facing planning tools, full visual identity system.",
+      "In-house technologist for an Experior Financial Group practice serving a 500+ agent organization. Web platform, education content, agent-facing planning tools, full visual identity system.",
     stack: ["React", "Next.js", "Lovable.dev → GitHub → Vercel"],
   },
 ];
