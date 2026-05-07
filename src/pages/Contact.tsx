@@ -9,23 +9,27 @@ const Contact = () => {
   const [submitting, setSubmitting] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", company: "", message: "" });
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) {
       toast.error("Please fill in name, email, and message.");
       return;
     }
     setSubmitting(true);
-    // V1: open a mailto draft so messages reach Tom immediately without a backend.
-    const subject = encodeURIComponent(`Geigersoft inquiry — ${form.name}`);
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\nCompany: ${form.company || "—"}\n\n${form.message}`,
-    );
-    window.location.href = `mailto:tom.geiger@me.com?subject=${subject}&body=${body}`;
-    setTimeout(() => {
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error();
+      toast.success("Message sent — I'll be in touch within one business day.");
+      setForm({ name: "", email: "", company: "", message: "" });
+    } catch {
+      toast.error("Something went wrong. Try emailing tom.geiger@me.com directly.");
+    } finally {
       setSubmitting(false);
-      toast.success("Opening your email client…");
-    }, 300);
+    }
   };
 
   const fieldCls =
