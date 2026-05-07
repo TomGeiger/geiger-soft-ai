@@ -8,7 +8,7 @@ import { projects } from "@/data/projects";
 const stackBlocks = [
   { label: "AI", items: "Claude API · MCP Servers · RAG Pipelines" },
   { label: "Voice", items: "SignalWire · SWAIG · Rime TTS" },
-  { label: "Web", items: "React · Next.js · TypeScript" },
+  { label: "Web", items: "React · TypeScript · Vite" },
   { label: "Domain", items: "IUL · Insurance · Agent Tooling" },
 ];
 
@@ -23,6 +23,21 @@ const engagements: Array<{ name: string; body: string; href?: string }> = [
   {
     name: "Trusted Future Agent Platform",
     body: "Agent Blueprint 2026 (React + Alpine.js wizard), AgentLink platform with ProspectPipelines and ProspectLink, IUL education content, mastermind curricula.",
+  },
+  {
+    name: "patriciageiger.com",
+    body: "Practice website for Patricia Geiger — Trusted Future / Horizon Capital lead agent. React/TypeScript/Vite site with IUL education content, interactive financial calculators, and long-form blog content.",
+    href: "https://www.patriciageiger.com",
+  },
+  {
+    name: "Precision Performance Financial Services",
+    body: "Marketing and lead-generation site for an IUL and retirement planning practice in Raleigh, NC. React/TypeScript/Vite build with animated scroll-triggered sections, an interactive Retirement Comparison tool, Recharts-powered historical performance visualizations, FAQ accordion, and Zod-validated contact form.",
+    href: "https://www.precisionperformancefinancial.com",
+  },
+  {
+    name: "Clarity Connect Psychiatry",
+    body: "Marketing and patient acquisition site for a telehealth psychiatric practice serving NC and KS. Multi-page React/TypeScript/Vite build with provider credentials, eight-condition services overview, educational resources, and Headway appointment scheduling. SEO-optimized with structured data schemas and HIPAA-compliant GA4 (IP anonymization, advertising features disabled).",
+    href: "https://clarityconnectpllc.com",
   },
 ];
 

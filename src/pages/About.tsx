@@ -23,7 +23,7 @@ const capabilities = [
   {
     icon: Cloud,
     title: "Cloud & DevOps",
-    body: "Azure, AWS, Vercel. GitHub Actions, Azure DevOps, Jenkins. Docker, Kubernetes.",
+    body: "Azure, AWS, Vercel. GitHub Actions, Azure DevOps, Jenkins. Docker.",
   },
   {
     icon: LineChart,
@@ -137,8 +137,16 @@ const About = () => {
               <p className="mt-1 font-mono text-xs text-foreground/45">North Carolina State University</p>
             </div>
             <div className="border-l-2 border-accent/40 pl-6">
+              <h3 className="font-display font-semibold text-lg">Selected Coursework — OOA, OOD, OOP in C++</h3>
+              <p className="mt-1 text-foreground/62">Wake Technical Community College</p>
+            </div>
+            <div className="border-l-2 border-accent/40 pl-6">
               <h3 className="font-display font-semibold text-lg">First Place — 1992 Software Developers Competition</h3>
               <p className="mt-1 text-foreground/62">Windows Application category</p>
+            </div>
+            <div className="border-l-2 border-accent/40 pl-6">
+              <h3 className="font-display font-semibold text-lg">Professional Affiliations</h3>
+              <p className="mt-1 text-foreground/62">IEEE · TriNUG · Council for Entrepreneurial Development (CED)</p>
             </div>
           </div>
         </div>

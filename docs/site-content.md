@@ -31,7 +31,7 @@ MCP servers, voice AI agents, and SaaS platforms — engineered for insurance an
 | :--- | :--- |
 | AI | Claude API · MCP Servers · RAG Pipelines |
 | Voice | SignalWire · SWAIG · Rime TTS |
-| Web | React · Next.js · TypeScript |
+| Web | React · TypeScript · Vite |
 | Domain | IUL · Insurance · Agent Tooling |
 
 **Past Clients (sidebar):** Ford Motor Co. · MetLife Japan · Genworth Financial · Willkie Farr
@@ -48,12 +48,22 @@ MCP servers, voice AI agents, and SaaS platforms — engineered for insurance an
 
 **Project cards (summary):**
 
-| # | Name | Status |
-| :-- | :--- | :--- |
-| 01 | TTF Fast Start Voice Coach | POC |
-| 02 | IUL Pro Analyzer | IN DEVELOPMENT |
-| 03 | ClearCount | IN BETA |
-| 04 | Trusted Future / Horizon Capital | LIVE · ONGOING |
+| # | Name | Status | Stack |
+| :-- | :--- | :--- | :--- |
+| 01 | TTF Fast Start Voice Coach | POC | TypeScript · Node.js · SignalWire AgentBase SDK · Rime TTS |
+| 02 | IUL Pro Analyzer | IN DEVELOPMENT | TypeScript · Anthropic MCP · Claude API · Node.js |
+| 03 | ClearCount | IN BETA | React · TypeScript · shadcn/ui · Vitest · GitHub + Vercel |
+| 04 | Trusted Future / Horizon Capital | LIVE · ONGOING | React 18 · TypeScript · Vite · Vercel Postgres · Upstash Redis |
+
+**Card short descriptions:**
+
+*01 — TTF Fast Start Voice Coach:* AI voice agent that answers onboarding questions for new insurance agents over the phone. Custom RAG pipeline (markdown-aware chunking, TF-IDF retrieval) over 11 source documents, exposed to the LLM via SignalWire SWAIG. Demoed live at Mastermind Friday; Phase 2 roadmap includes CRM integration and pgvector.
+
+*02 — IUL Pro Analyzer:* AI-powered MCP server with 25+ tools for Indexed Universal Life policy analysis, comparisons, and client consultation. Built on the Anthropic Claude API and Model Context Protocol.
+
+*03 — ClearCount:* Four-module financial clarity SaaS for insurance agents, CPAs, and consumers — commission tracking, household finance, CPA portal, and consumer onboarding. Local-first, ~12K+ LOC, 280 TypeScript/TSX modules.
+
+*04 — Trusted Future / Horizon Capital:* In-house technologist for an Experior Financial Group practice serving a 500+ agent organization. Horizon Capital platform: ~40K LOC, 230 TypeScript modules, 23 Postgres migrations, 220+ commits over 16 months.
 
 ---
 
@@ -80,12 +90,22 @@ Real CI/CD, real test coverage, real deployments. Past clients include Ford Moto
 
 **Headline:** Selected recent work.
 
-**TenXTL**
+**TenXTL** *(link: tenxtl-developer-academy.vercel.app)*
 Sustainability technology. Code analysis, developer training platform, Data Platform API architecture proposal. Built the complete TenXTL Developer Academy — a 14-module React/TypeScript/Tailwind training site.
-*Link: tenxtl-developer-academy.vercel.app*
 
 **Trusted Future Agent Platform**
 Agent Blueprint 2026 (React + Alpine.js wizard), AgentLink platform with ProspectPipelines and ProspectLink, IUL education content, mastermind curricula.
+
+**patriciageiger.com** *(link: patriciageiger.com)*
+Practice website for Patricia Geiger — Trusted Future / Horizon Capital lead agent. React/TypeScript/Vite site with IUL education content, interactive financial calculators, and long-form blog content.
+
+**Precision Performance Financial Services** *(link: precisionperformancefinancial.com)*
+Marketing and lead-generation site for an IUL and retirement planning practice in Raleigh, NC. React/TypeScript/Vite build with animated scroll-triggered sections, an interactive Retirement Comparison tool, Recharts-powered historical performance visualizations, FAQ accordion, and Zod-validated contact form.
+*Stack: React 18 · TypeScript · Vite · Tailwind CSS · shadcn/ui · Recharts · React Hook Form · Zod · Vercel*
+
+**Clarity Connect Psychiatry, PLLC** *(link: clarityconnectpllc.com)*
+Marketing and patient acquisition site for a telehealth psychiatric practice serving patients in North Carolina and Kansas. Multi-page React/TypeScript/Vite build with a provider bio and credentials section, a services overview covering eight mental health conditions (anxiety, depression, ADHD, bipolar disorder, PTSD, OCD), an educational resources section with long-form articles, and appointment scheduling integrated directly with the Headway platform. SEO-optimized with structured data schemas (LocalBusiness, MedicalService, Person, Breadcrumb), geo-targeting meta tags for NC and KS, and HIPAA-compliant Google Analytics 4 (IP anonymization, advertising features disabled, custom event tracking for appointment and contact interactions). Zod-validated forms and React Hook Form throughout.
+*Stack: React 18 · TypeScript · Vite · Tailwind CSS · shadcn/ui · React Router · React Hook Form · Zod · React Helmet Async · GA4 · Vercel*
 
 ---
 
@@ -176,24 +196,27 @@ Active development. Currently exploring SaaS deployment at iulproanalyzer.com wi
 **Status:** In Beta
 
 **Overview:**
-A financial clarity SaaS platform with a dual-audience design — built for both insurance agents and individual consumers. Local-first architecture means data stays on the user's machine until they explicitly export.
+A four-module financial clarity SaaS platform built for insurance agents, CPAs, and individual consumers. Local-first architecture keeps data on the user's machine until they explicitly export — ~12K+ LOC across 280 TypeScript/TSX modules.
 
 **What it does:**
-- Smart CSV import with automatic transaction categorization.
-- Dual experience layer: agents see pipeline-relevant tagging, consumers see budget categories.
-- Local-first persistence (localStorage / SQLite) — no server-side data storage required.
+- Four distinct product modules: household finance with settlement engine, insurance agent commission tracker (1099/vesting/chargebacks), CPA portal with three permission levels, and consumer onboarding.
+- Learning engine for merchant-to-category rules — improves automatic transaction categorization over time without manual re-tagging.
+- Account-aware storage keys and custom event bus — modules share state without coupling.
+- Module unlock-code gating for staged rollout and beta access control.
+- Smart CSV import powered by PapaParse + Zod validation; automatic transaction categorization on import.
+- 38 Vitest + RTL test files covering core modules.
 - Full PRD, Terms of Service, Privacy Policy, and Beta NDA in place.
 
 **Stack:**
 
 | Layer | Technologies |
 | :--- | :--- |
-| Frontend | React · TypeScript · Tailwind CSS |
-| Persistence | localStorage · SQLite |
-| Deployment | GitHub + Vercel |
+| Frontend | React · TypeScript · Tailwind · shadcn/ui (52 components) · Recharts |
+| Data | localStorage · PapaParse · date-fns · Zod |
+| Testing & Deploy | Vitest · RTL · GitHub + Vercel |
 
 **Outcome:**
-Currently in private beta with insurance agents and a small consumer cohort. Beta feedback is shaping the v1 release roadmap.
+Currently in private beta with insurance agents and a small consumer cohort. ~12K+ LOC, 280 TypeScript/TSX modules, 38 test files. Beta feedback is shaping the v1 release roadmap.
 
 ---
 
@@ -202,25 +225,26 @@ Currently in private beta with insurance agents and a small consumer cohort. Bet
 **Status:** Live · Ongoing
 
 **Overview:**
-In-house technologist for an Experior Financial Group practice serving an organization of 500+ insurance agents in the Indexed Universal Life space. Owns the practice's web presence, education content, and agent-facing software.
+In-house technologist for an Experior Financial Group practice serving an organization of 500+ insurance agents in the Indexed Universal Life space. The Horizon Capital platform is the flagship engineering deliverable — ~40K LOC, 230 TypeScript/TSX modules, 23 Postgres migrations, 220+ commits over 16 months.
 
 **What it does:**
-- Built and maintains patriciageiger.com (Lovable.dev → GitHub → Vercel, Namecheap DNS).
+- Horizon Capital platform: Guardian Edge premium tier (11 smart agent-facing components), magic-link auth agent portal, UTM attribution on lead CRM, event RSVP and survey engine.
+- Serverless consolidation: reduced 30+ legacy endpoints to 12 Vercel Serverless functions backed by Vercel Postgres and Upstash Redis — $0 infrastructure cost at current scale.
+- Maintains patriciageiger.com — originated from a Lovable.dev scaffold, evolved to a production React/Vite/TypeScript codebase with CI/CD via GitHub + Vercel.
 - Produces IUL education content and interactive financial tools — compound interest calculators, 401(k) vs IUL comparisons, long-form blog content.
 - Designs and delivers Friday Night Mastermind curricula, blending business systems thinking with financial education.
 - Develops agent-facing software including the Agent Blueprint 2026 planning app — a React + Alpine.js wizard with localStorage persistence, pipeline math, and full design-system branding.
 - Designed the Trusted Future visual identity (Deep Navy / Warm Gold / Cream) and applies it across web, print, and presentation materials.
-- Built the AgentLink platform (ProspectPipelines, ProspectLink) — initial release shipped, currently being re-architected as part of a broader CRM modernization effort.
 
 **Stack:**
 
 | Layer | Technologies |
 | :--- | :--- |
-| Frontend | React · Alpine.js · Next.js · Tailwind |
-| Tooling | Lovable.dev · GitHub · Vercel · Namecheap DNS |
-| Brand system | Deep Navy / Warm Gold / Cream |
+| Frontend | React 18 · TypeScript · Vite · Tailwind · shadcn/ui |
+| Backend | Vercel Serverless · Vercel Postgres · Upstash Redis · jose JWT |
+| Tooling | Vitest · GitHub · Vercel · Namecheap DNS |
 
-**Outcome:** Three years and counting. Active across web, content, software, and brand.
+**Outcome:** Three years and counting. ~40K LOC, 230 TypeScript/TSX modules, 220+ commits. Active across web platform, content, software, and brand.
 
 ---
 
@@ -267,7 +291,7 @@ React, Next.js, Vue, Astro, TypeScript, Tailwind CSS. Vercel and GitHub-based CI
 .NET / C# / ASP.NET MVC / Web API, Node.js, Python. REST and OData API design. SQL Server, Azure SQL, MongoDB, RavenDB.
 
 **Cloud & DevOps**
-Azure, AWS, Vercel. GitHub Actions, Azure DevOps, Jenkins. Docker, Kubernetes.
+Azure, AWS, Vercel. GitHub Actions, Azure DevOps, Jenkins. Docker.
 
 **Financial Services Domain**
 Indexed Universal Life (IUL) product knowledge, illustration analysis, and policy comparison. Insurance agent tooling, pipeline management, CRM integration. Financial education content and interactive tools.
@@ -292,8 +316,14 @@ Polytechnic University of New York · December 1991
 Smalltalk · C++ · Eiffel · OODB
 North Carolina State University
 
+**Selected Coursework — OOA, OOD, OOP in C++**
+Wake Technical Community College
+
 **First Place — 1992 Software Developers Competition**
 Windows Application category
+
+**Professional Affiliations**
+IEEE · TriNUG · Council for Entrepreneurial Development (CED)
 
 ---
 

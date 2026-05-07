@@ -32,8 +32,8 @@ export const projects: Project[] = [
     name: "ClearCount",
     status: "IN BETA",
     short:
-      "Financial clarity SaaS platform with a dual-audience design — insurance agents and consumers. Local-first architecture using localStorage / SQLite, CSV import, and smart categorization.",
-    stack: ["React", "TypeScript", "Tailwind", "GitHub + Vercel"],
+      "Four-module financial clarity SaaS for insurance agents, CPAs, and consumers — commission tracking, household finance, CPA portal, and consumer onboarding. Local-first, ~12K+ LOC, 280 TypeScript/TSX modules.",
+    stack: ["React", "TypeScript", "shadcn/ui", "Vitest", "GitHub + Vercel"],
   },
   {
     id: "trusted-future",
@@ -41,7 +41,7 @@ export const projects: Project[] = [
     name: "Trusted Future / Horizon Capital",
     status: "LIVE · ONGOING",
     short:
-      "In-house technologist for an Experior Financial Group practice serving a 500+ agent organization. Web platform, education content, agent-facing planning tools, full visual identity system.",
-    stack: ["React", "Next.js", "Lovable.dev → GitHub → Vercel"],
+      "In-house technologist for an Experior Financial Group practice serving a 500+ agent organization. Horizon Capital platform: ~40K LOC, 230 TypeScript modules, 23 Postgres migrations, 220+ commits over 16 months.",
+    stack: ["React 18", "TypeScript", "Vite", "Vercel Postgres", "Upstash Redis"],
   },
 ];

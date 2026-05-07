@@ -69,20 +69,23 @@ const details: ProjectDetail[] = [
     name: "ClearCount",
     status: "In Beta",
     overview:
-      "A financial clarity SaaS platform with a dual-audience design — built for both insurance agents and individual consumers. Local-first architecture means data stays on the user's machine until they explicitly export.",
+      "A four-module financial clarity SaaS platform built for insurance agents, CPAs, and individual consumers. Local-first architecture keeps data on the user's machine until they explicitly export — ~12K+ LOC across 280 TypeScript/TSX modules.",
     bullets: [
-      "Smart CSV import with automatic transaction categorization.",
-      "Dual experience layer: agents see pipeline-relevant tagging, consumers see budget categories.",
-      "Local-first persistence (localStorage / SQLite) — no server-side data storage required.",
+      "Four distinct product modules: household finance with settlement engine, insurance agent commission tracker (1099/vesting/chargebacks), CPA portal with three permission levels, and consumer onboarding.",
+      "Learning engine for merchant-to-category rules — improves automatic transaction categorization over time without manual re-tagging.",
+      "Account-aware storage keys and custom event bus — modules share state without coupling.",
+      "Module unlock-code gating for staged rollout and beta access control.",
+      "Smart CSV import powered by PapaParse + Zod validation; automatic transaction categorization on import.",
+      "38 Vitest + RTL test files covering core modules.",
       "Full PRD, Terms of Service, Privacy Policy, and Beta NDA in place.",
     ],
     stack: [
-      { label: "Frontend", items: "React · TypeScript · Tailwind CSS" },
-      { label: "Persistence", items: "localStorage · SQLite" },
-      { label: "Deployment", items: "GitHub + Vercel" },
+      { label: "Frontend", items: "React · TypeScript · Tailwind · shadcn/ui (52 components) · Recharts" },
+      { label: "Data", items: "localStorage · PapaParse · date-fns · Zod" },
+      { label: "Testing & Deploy", items: "Vitest · RTL · GitHub + Vercel" },
     ],
     outcome:
-      "Currently in private beta with insurance agents and a small consumer cohort. Beta feedback is shaping the v1 release roadmap.",
+      "Currently in private beta with insurance agents and a small consumer cohort. ~12K+ LOC, 280 TypeScript/TSX modules, 38 test files. Beta feedback is shaping the v1 release roadmap.",
   },
   {
     id: "trusted-future",
@@ -90,21 +93,22 @@ const details: ProjectDetail[] = [
     name: "Trusted Future / Horizon Capital",
     status: "Live · Ongoing",
     overview:
-      "In-house technologist for an Experior Financial Group practice serving an organization of 500+ insurance agents in the Indexed Universal Life space. Owns the practice's web presence, education content, and agent-facing software.",
+      "In-house technologist for an Experior Financial Group practice serving an organization of 500+ insurance agents in the Indexed Universal Life space. The Horizon Capital platform is the flagship engineering deliverable — ~40K LOC, 230 TypeScript/TSX modules, 23 Postgres migrations, 220+ commits over 16 months.",
     bullets: [
-      "Built and maintains patriciageiger.com (Lovable.dev → GitHub → Vercel, Namecheap DNS).",
+      "Horizon Capital platform: Guardian Edge premium tier (11 smart agent-facing components), magic-link auth agent portal, UTM attribution on lead CRM, event RSVP and survey engine.",
+      "Serverless consolidation: reduced 30+ legacy endpoints to 12 Vercel Serverless functions backed by Vercel Postgres and Upstash Redis — $0 infrastructure cost at current scale.",
+      "Maintains patriciageiger.com — originated from a Lovable.dev scaffold, evolved to a production React/Vite/TypeScript codebase with CI/CD via GitHub + Vercel.",
       "Produces IUL education content and interactive financial tools — compound interest calculators, 401(k) vs IUL comparisons, long-form blog content.",
       "Designs and delivers Friday Night Mastermind curricula, blending business systems thinking with financial education.",
       "Develops agent-facing software including the Agent Blueprint 2026 planning app — a React + Alpine.js wizard with localStorage persistence, pipeline math, and full design-system branding.",
       "Designed the Trusted Future visual identity (Deep Navy / Warm Gold / Cream) and applies it across web, print, and presentation materials.",
-      "Built the AgentLink platform (ProspectPipelines, ProspectLink) — initial release shipped, currently being re-architected as part of a broader CRM modernization effort.",
     ],
     stack: [
-      { label: "Frontend", items: "React · Alpine.js · Next.js · Tailwind" },
-      { label: "Tooling", items: "Lovable.dev · GitHub · Vercel · Namecheap DNS" },
-      { label: "Brand system", items: "Deep Navy / Warm Gold / Cream" },
+      { label: "Frontend", items: "React 18 · TypeScript · Vite · Tailwind · shadcn/ui" },
+      { label: "Backend", items: "Vercel Serverless · Vercel Postgres · Upstash Redis · jose JWT" },
+      { label: "Tooling", items: "Vitest · GitHub · Vercel · Namecheap DNS" },
     ],
-    outcome: "Three years and counting. Active across web, content, software, and brand.",
+    outcome: "Three years and counting. ~40K LOC, 230 TypeScript/TSX modules, 220+ commits. Active across web platform, content, software, and brand.",
   },
 ];
 
